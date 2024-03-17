@@ -1,0 +1,299 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --mainColor: rgb(130, 99, 225);
+    --textColor: #999999;
+    --boxShadowColor: rgba(130, 99, 225, 0.5);
+    --mainFont: "DM Sans", sans-serif;
+}
+
+body {
+    font-family: var(--mainFont);
+    height: 1500px;
+}
+
+/* global style */
+
+.container {
+    width: 80%;
+    height: 100%;
+    max-width: 1400px;
+    margin: auto;
+}
+
+.row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    height: 100%;
+}
+
+.btn {
+    width: fit-content;
+    padding: 5px 15px;
+    border-radius: 30px;
+    background-color: var(--mainColor);
+    color: white;
+    font-weight: 600;
+    font-size: 15px;
+    transition: 200ms ease-in-out;
+    cursor: pointer;
+}
+
+.btn:hover {
+    box-shadow: 0px 0px 10px var(--boxShadowColor);
+}
+
+/* heroSection style */
+.heroSection {
+    width: 100%;
+    height: 100vh;
+    background-image: url("../images/heroBg.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 80% 20%;
+}
+
+.heroSection__header,
+.heroSection__content {
+    /* background-color: red; */
+    flex-basis: 100%;
+}
+
+.heroSection__header {
+    padding: 10px 0px;
+}
+
+.heroSection__header .toogleNabBar {
+    width: 30px;
+    height: 30px;
+    background-color: var(--mainColor);
+    border-radius: 4px;
+    color: white;
+    display: none;
+}
+
+.heroSection__header .row {
+    align-items: center;
+}
+
+.heroSection__header--logo {
+    max-width: 150px;
+}
+.heroSection__header--logo img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.heroSection__header--searchInput {
+    width: 250px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 30px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+}
+
+.heroSection__header--searchInput input {
+    all: unset;
+    width: 100%;
+    height: 100%;
+    padding: 7px 15px;
+    color: white;
+}
+
+.heroSection__header--searchInput input::placeholder {
+    color: var(--textColor);
+    text-transform: capitalize;
+}
+
+.heroSection__header--links a {
+    color: white;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 16px;
+    transition: 200ms ease-in-out;
+}
+
+.heroSection__header--links a:hover {
+    transform: scale(1.2);
+}
+
+.heroSection__header--links:hover a:not(:hover) {
+    filter: blur(5px);
+}
+
+.heroSection__header--links .row {
+    gap: 40px;
+    align-items: center;
+}
+
+.heroSection__content--info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.heroSection__content--info .topTilte {
+    color: var(--mainColor);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: -15px;
+    animation: heroInfoAnimation 800ms ease-in-out backwards;
+}
+
+.heroSection__content--info .mainTitle {
+    color: white;
+    font-weight: bold;
+    font-size: 50px;
+    animation: heroInfoAnimation 800ms ease-in-out 400ms backwards;
+}
+
+.heroSection__content--info .heroDesc {
+    color: var(--textColor);
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 1.8rem;
+    animation: heroInfoAnimation 800ms ease-in-out 600ms backwards;
+}
+
+.heroSection__content--info .btn {
+    margin-top: 20px;
+    padding: 8px 40px;
+}
+
+.countersElements {
+    color: white;
+    margin-top: 15px;
+    max-width: 500px;
+}
+
+.countersElements h2 {
+    font-size: 30px;
+    font-weight: bold;
+}
+.countersElements p {
+    font-weight: bold;
+}
+
+.heroSection__content .row {
+    align-items: center;
+}
+
+.heroSection__content--img {
+    flex-basis: 600px;
+    animation: heroImageAnimation 800ms ease-in-out;
+}
+
+.heroSection__content--img img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+@keyframes heroImageAnimation {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes heroInfoAnimation {
+    0% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@media (min-width: 990px) and (max-width: 1200px) {
+    .heroSection__content--img {
+        flex-basis: 400px;
+    }
+}
+
+@media (max-width: 990px) {
+    .heroSection__content--img {
+        display: none;
+    }
+    .heroSection__content--info .topTilte {
+        font-size: 16px;
+    }
+
+    .heroSection__content--info .mainTitle {
+        font-size: 30px;
+    }
+
+    .heroSection__content--info .heroDesc,
+    .countersElements p {
+        font-size: 15px;
+    }
+    .countersElements h2 {
+        font-size: 18px;
+    }
+
+    .heroSection__header--searchInput {
+        display: none;
+    }
+    .heroSection__header--links {
+        background-color: #212121;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: -100%;
+        height: 100vh;
+        width: 300px;
+        z-index: 10;
+        padding: 100px 20px;
+        transition: 300ms ease-in-out;
+    }
+    .heroSection__header--links:has(input:checked) {
+        right: 0%;
+    }
+
+
+    .heroSection__header--links .row {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+    .heroSection__header .toogleNabBar {
+        display: block;
+        position: relative;
+        cursor: pointer;
+        z-index: 11;
+    }
+    .heroSection__header .toogleNabBar i {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: 300ms ease-in-out;
+    }
+    .heroSection__header .toogleNabBar i.fa-xmark {
+        transform: translate(-50%, -50%) scale(0);
+    }
+
+    .heroSection__header:has(input:checked) .toogleNabBar i.fa-bars{
+        transform: translate(-50%, -50%) scale(0);
+    }
+
+    .heroSection__header:has(input:checked) .toogleNabBar i.fa-xmark{
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
